@@ -16,6 +16,8 @@ recursively calls itself is actually linear.
 
 ## Exercise II
 
+Big O notation of O(n * log n)
+
 I would start by finding the middle floor so if n was 20, I would start at 10. I
 would then drop an egg and determine if it did break. 
 
@@ -26,7 +28,10 @@ If I was too low, I would take the middle of the current floor and n, so in this
 case 15 and repeat until I found a floor where the egg broke.
 
 If I landed on a floor where the egg broke, I would go to the floor of the
-current floor I'm on divided by 2 (in this case if I started at 10 and it wasn't
+current floor I'm on divided by 2 (in this case if I started at 10 and it was
 a breaking floor, I would go to 5).
 
-I would repeat this process u
+If this was also a breaking floor, I would walk down until the first floor that
+didn't break and I would know that the lowest break floor is the floor above.
+
+If it wasn't a breaking floor I would walk up until it was a breaking floor.
