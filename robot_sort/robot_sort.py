@@ -93,12 +93,34 @@ class SortingRobot:
         """
         return self._light == "ON"
 
+    def item_is_none(self):
+        """  """
+        if self.compare_item() is None:
+            if self.can_move_right():
+                self.move_right()
+                if self.compare_item() is None:
+                    self.move_left()
+                    return False
+                else:
+                    self.move_left()
+                    return True
+            elif self.can_move_left():
+                self.move_left()
+                if self.compare_item() is None:
+                    self.move_right()
+                    return False
+                else:
+                    self.move_right()
+                    return True
+        else:
+            return False
+
+
     def sort(self):
         """
         Sort the robot's list.
         """
         self.set_light_on()
-
         while self.light_is_on():
             self.set_light_off()
             self.swap_item()
@@ -120,6 +142,9 @@ class SortingRobot:
                 self.move_right()
                 self.swap_item()
                 self.move_left()
+
+        if self.item_is_none():
+            self.swap_item()
 
 if __name__ == "__main__":
     # Test our your implementation from the command line
